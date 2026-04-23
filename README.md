@@ -64,13 +64,13 @@ pnpm install
 
 ```env
 # NewsAPI 키 (https://newsapi.org/)
-NEWS_API_KEY=your_news_api_key_here
+NEW_API_KEY=your_news_api_key_here
 
 # OpenWeatherMap API 키 (https://openweathermap.org/api)
-OPENWEATHER_API_KEY=your_openweather_api_key_here
+WEATHER_API_KEY=your_openweather_api_key_here
 
 # Kakao REST API 키 (https://developers.kakao.com/)
-KAKAO_REST_API_KEY=your_kakao_api_key_here
+KAKAO_API_KEY=your_kakao_api_key_here
 ```
 
 ### 개발 서버 실행
