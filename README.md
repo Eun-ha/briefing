@@ -13,7 +13,6 @@
 - 🌤️ **날씨 정보**: OpenWeatherMap 현재 날씨 API 기반 지역별 날씨 조회
 - 🚗 **교통 소요시간 계산**: 출발지/도착지 좌표 입력 시 Kakao Mobility Directions API로 예상 시간 계산
 - ⚡ **서버 렌더링 기반 초기 데이터 로딩**: `/api/briefing` 호출로 뉴스/날씨를 서버에서 병렬 조회
-- 🌙 **다크 모드 대응 UI**: Tailwind 유틸리티 기반 라이트/다크 스타일 제공
 
 ## 🧱 기술 스택
 
@@ -151,8 +150,7 @@ briefing/
 │   ├── components/
 │   │   ├── NewsSection.tsx
 │   │   ├── WeatherSection.tsx
-│   │   ├── TrafficSection.tsx
-│   │   └── ErrorFallback.tsx
+│   │   └── TrafficSection.tsx
 │   ├── services/
 │   │   ├── newsService.ts
 │   │   ├── weatherService.ts
