@@ -1,10 +1,12 @@
 import { NewsSection } from "./components/NewsSection";
 import { WeatherSection } from "./components/WeatherSection";
 import { TrafficSection } from "./components/TrafficSection";
+import type { NewsResult } from "./sevices/newsService";
+import type { WeatherResult } from "./sevices/weatherService";
 
 interface BriefingData {
-  news: any;
-  weather: any;
+  news: NewsResult | null;
+  weather: WeatherResult | null;
 }
 
 interface ApiResponse {

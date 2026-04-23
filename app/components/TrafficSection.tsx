@@ -3,11 +3,7 @@
 import { useState } from 'react';
 import type { TrafficResult } from "../sevices/trafficService";
 
-interface TrafficSectionProps {
-  traffic?: TrafficResult | null;
-}
-
-export function TrafficSection({ traffic }: TrafficSectionProps) {
+export function TrafficSection() {
   const [originLat, setOriginLat] = useState('');
   const [originLng, setOriginLng] = useState('');
   const [destLat, setDestLat] = useState('');
@@ -34,14 +30,12 @@ export function TrafficSection({ traffic }: TrafficSectionProps) {
       } else {
         setError(result.message || '교통 정보를 가져오는데 실패했습니다.');
       }
-    } catch (err) {
+    } catch {
       setError('API 호출 중 오류가 발생했습니다.');
     } finally {
       setLoading(false);
     }
   };
-
-  const displayTraffic = calculatedTraffic;
 
   return (
     <article className="rounded-3xl bg-white p-6 shadow-sm dark:bg-zinc-900">
@@ -127,12 +121,12 @@ export function TrafficSection({ traffic }: TrafficSectionProps) {
       </div>
 
       {/* 결과 표시 */}
-      {displayTraffic ? (
+      {calculatedTraffic ? (
         <div className="mt-6 space-y-4">
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            {displayTraffic.origin} → {displayTraffic.destination}
+            {calculatedTraffic.origin} → {calculatedTraffic.destination}
           </p>
-          <p className="text-2xl font-semibold">{displayTraffic.duration_in_minutes}분</p>
+          <p className="text-2xl font-semibold">{calculatedTraffic.duration_in_minutes}분</p>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">예상 소요 시간</p>
         </div>
       ) : !calculatedTraffic && (
