@@ -3,11 +3,7 @@
 import { useState } from 'react';
 import type { TrafficResult } from "../sevices/trafficService";
 
-interface TrafficSectionProps {
-  traffic?: TrafficResult | null;
-}
-
-export function TrafficSection({ traffic }: TrafficSectionProps) {
+export function TrafficSection() {
   const [originLat, setOriginLat] = useState('');
   const [originLng, setOriginLng] = useState('');
   const [destLat, setDestLat] = useState('');
@@ -34,7 +30,7 @@ export function TrafficSection({ traffic }: TrafficSectionProps) {
       } else {
         setError(result.message || '교통 정보를 가져오는데 실패했습니다.');
       }
-    } catch (err) {
+    } catch {
       setError('API 호출 중 오류가 발생했습니다.');
     } finally {
       setLoading(false);

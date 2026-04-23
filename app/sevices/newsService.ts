@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const NEWS_API_KEY = process.env.NEW_API_KEY;
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
 const NEWS_API_URL = 'https://newsapi.org/v2/top-headlines';
 
 // 뉴스 기사 타입
