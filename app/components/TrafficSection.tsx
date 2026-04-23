@@ -37,8 +37,6 @@ export function TrafficSection() {
     }
   };
 
-  const displayTraffic = calculatedTraffic;
-
   return (
     <article className="rounded-3xl bg-white p-6 shadow-sm dark:bg-zinc-900">
       <div className="flex items-center justify-between">
@@ -123,12 +121,12 @@ export function TrafficSection() {
       </div>
 
       {/* 결과 표시 */}
-      {displayTraffic ? (
+      {calculatedTraffic ? (
         <div className="mt-6 space-y-4">
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            {displayTraffic.origin} → {displayTraffic.destination}
+            {calculatedTraffic.origin} → {calculatedTraffic.destination}
           </p>
-          <p className="text-2xl font-semibold">{displayTraffic.duration_in_minutes}분</p>
+          <p className="text-2xl font-semibold">{calculatedTraffic.duration_in_minutes}분</p>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">예상 소요 시간</p>
         </div>
       ) : !calculatedTraffic && (
