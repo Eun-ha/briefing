@@ -2,15 +2,15 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.2.3-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2.4-blue)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.0-38B2AC)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC)](https://tailwindcss.com/)
 
 실시간 뉴스, 날씨, 교통 정보를 제공하는 현대적인 브리핑 웹 애플리케이션입니다.
 
 ## ✨ 주요 기능
 
 - 📰 **실시간 뉴스**: NewsAPI를 활용한 최신 뉴스 기사 제공
-- 🌤️ **날씨 정보**: OpenWeatherMap API를 통한 현재 날씨 및 예보
+- 🌤️ **날씨 정보**: OpenWeatherMap API를 통한 현재 날씨 제공
 - 🚗 **교통 정보**: Kakao Mobility API를 활용한 실시간 교통 소요시간 계산
 - 📱 **반응형 디자인**: 모바일과 데스크톱 모두 최적화된 UI
 - ⚡ **서버 사이드 렌더링**: Next.js를 활용한 빠른 초기 로딩
@@ -64,13 +64,13 @@ pnpm install
 
 ```env
 # NewsAPI 키 (https://newsapi.org/)
-NEWS_API_KEY=your_news_api_key_here
+NEW_API_KEY=your_news_api_key_here
 
 # OpenWeatherMap API 키 (https://openweathermap.org/api)
-OPENWEATHER_API_KEY=your_openweather_api_key_here
+WEATHER_API_KEY=your_openweather_api_key_here
 
 # Kakao REST API 키 (https://developers.kakao.com/)
-KAKAO_REST_API_KEY=your_kakao_api_key_here
+KAKAO_API_KEY=your_kakao_api_key_here
 ```
 
 ### 개발 서버 실행
@@ -135,31 +135,28 @@ GET /api/traffic?originLng=126.9706&originLat=37.5546&destLng=127.0276&destLat=3
 briefing/
 ├── app/
 │   ├── api/
-│   │   ├── test/
+│   │   ├── briefing/
 │   │   │   └── route.ts          # 뉴스/날씨 API
-│   │   ├── traffic/
-│   │   │   └── route.ts          # 교통 정보 API
-│   │   ├── news/
-│   │   │   └── route.ts          # 뉴스 API (별도)
-│   │   └── weather/
-│   │       └── route.ts          # 날씨 API (별도)
+│   │   └── traffic/
+│   │       └── route.ts          # 교통 정보 API
 │   ├── components/
 │   │   ├── NewsSection.tsx       # 뉴스 표시 컴포넌트
 │   │   ├── WeatherSection.tsx    # 날씨 표시 컴포넌트
-│   │   └── TrafficSection.tsx    # 교통 정보 컴포넌트
+│   │   ├── TrafficSection.tsx    # 교통 정보 컴포넌트
+│   │   └── ErrorFallback.tsx     # 에러 표시 컴포넌트(현재 미연결)
 │   ├── sevices/
 │   │   ├── newsService.ts        # 뉴스 API 서비스
 │   │   ├── weatherService.ts     # 날씨 API 서비스
 │   │   └── trafficService.ts     # 교통 API 서비스
 │   ├── globals.css               # 전역 스타일
 │   ├── layout.tsx                # 루트 레이아웃
+│   ├── not-found.tsx             # 404 페이지
 │   ├── page.tsx                  # 메인 페이지
-│   └── providers/
-│       └── QueryProvider.tsx     # React Query 프로바이더 (미사용)
+│   └── favicon.ico
 ├── public/                       # 정적 파일
 ├── .env.local                    # 환경 변수 (gitignore)
 ├── package.json                  # 프로젝트 설정
-├── tailwind.config.ts           # Tailwind 설정
+├── postcss.config.mjs            # PostCSS/Tailwind 설정
 ├── next.config.ts               # Next.js 설정
 ├── tsconfig.json                # TypeScript 설정
 └── README.md                     # 프로젝트 설명
