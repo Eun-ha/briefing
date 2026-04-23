@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const KAKAO_API_KEY = process.env.KAKAO_API_KEY;
+const KAKAO_API_KEY = process.env.KAKAO_REST_API_KEY;
 const KAKAO_DIRECTIONS_URL = 'https://apis-navi.kakaomobility.com/v1/directions';
 
 // Kakao Directions API 응답 타입들

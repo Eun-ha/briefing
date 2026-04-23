@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { WeatherResult } from "../sevices/weatherService";
 
 interface WeatherSectionProps {
@@ -18,10 +19,12 @@ export function WeatherSection({ weather }: WeatherSectionProps) {
           </p>
           <p className="text-2xl font-semibold">{Math.round(weather.temperature)}°C</p>
           {weather.icon && (
-            <img
+            <Image
               src={weather.icon}
               alt={weather.description}
-              className="w-16 h-16"
+              width={64}
+              height={64}
+              className="h-16 w-16"
             />
           )}
         </div>
