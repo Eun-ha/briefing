@@ -1,121 +1,124 @@
 # Briefing - 일일 브리핑 앱
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.2.3-black)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.2.4-blue)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.0-38B2AC)](https://tailwindcss.com/)
+[![React](https://img.shields.io/badge/React-19.2.4-blue)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC)](https://tailwindcss.com/)
 
-실시간 뉴스, 날씨, 교통 정보를 제공하는 현대적인 브리핑 웹 애플리케이션입니다.
+실시간 뉴스, 날씨, 교통 정보를 한 화면에서 확인할 수 있는 Next.js 기반 브리핑 웹 애플리케이션입니다.
 
-## ✨ 주요 기능
+## ✨ 핵심 기능
 
-- 📰 **실시간 뉴스**: NewsAPI를 활용한 최신 뉴스 기사 제공
-- 🌤️ **날씨 정보**: OpenWeatherMap API를 통한 현재 날씨 및 예보
-- 🚗 **교통 정보**: Kakao Mobility API를 활용한 실시간 교통 소요시간 계산
-- 📱 **반응형 디자인**: 모바일과 데스크톱 모두 최적화된 UI
-- ⚡ **서버 사이드 렌더링**: Next.js를 활용한 빠른 초기 로딩
-- 🎨 **다크 모드 지원**: 시스템 테마에 자동 적응
+- 📰 **뉴스 브리핑**: NewsAPI Top Headlines에서 카테고리별 최신 기사 조회
+- 🌤️ **날씨 정보**: OpenWeatherMap 현재 날씨 API 기반 지역별 날씨 조회
+- 🚗 **교통 소요시간 계산**: 출발지/도착지 좌표 입력 시 Kakao Mobility Directions API로 예상 시간 계산
+- ⚡ **서버 렌더링 기반 초기 데이터 로딩**: `/api/briefing` 호출로 뉴스/날씨를 서버에서 병렬 조회
+- 🌙 **다크 모드 대응 UI**: Tailwind 유틸리티 기반 라이트/다크 스타일 제공
 
-## 🛠️ 기술 스택
+## 🧱 기술 스택
 
-### Frontend
-- **Next.js 16.2.3** - React 기반 풀스택 프레임워크
-- **React 19.2.4** - 사용자 인터페이스 라이브러리
-- **TypeScript** - 타입 안전성 제공
-- **Tailwind CSS** - 유틸리티 기반 CSS 프레임워크
+- **Framework**: Next.js 16.2.3 (App Router)
+- **UI**: React 19.2.4
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4 + PostCSS
+- **HTTP Client**: axios
 
-### Backend & API
-- **Next.js API Routes** - 서버리스 API 엔드포인트
-- **Axios** - HTTP 클라이언트
-- **NewsAPI** - 뉴스 데이터
-- **OpenWeatherMap API** - 날씨 데이터
-- **Kakao Mobility API** - 교통 정보
+## 🚀 시작하기
 
-### 개발 도구
-- **ESLint** - 코드 품질 관리
-- **PostCSS** - CSS 처리
-- **TypeScript Compiler** - 타입 체킹
+## 1) 요구 사항
 
-## 🚀 설치 및 실행
+- Node.js 18+
+- npm
 
-### 사전 요구사항
-
-- Node.js 18.0 이상
-- npm, yarn, pnpm, 또는 bun
-
-### 설치
+## 2) 설치
 
 ```bash
-# 저장소 클론
 git clone <repository-url>
 cd briefing
-
-# 의존성 설치
 npm install
-# 또는
-yarn install
-# 또는
-pnpm install
 ```
 
-### 환경 변수 설정
+## 3) 환경 변수 설정
 
-`.env.local` 파일을 생성하고 다음 API 키들을 설정하세요:
+프로젝트 루트에 `.env.local` 파일을 만들고 아래 값을 설정하세요.
 
 ```env
-# NewsAPI 키 (https://newsapi.org/)
-NEW_API_KEY=your_news_api_key_here
+# NewsAPI (https://newsapi.org/)
+NEWS_API_KEY=your_news_api_key
 
-# OpenWeatherMap API 키 (https://openweathermap.org/api)
-WEATHER_API_KEY=your_openweather_api_key_here
+# OpenWeatherMap (https://openweathermap.org/api)
+WEATHER_API_KEY=your_openweather_api_key
 
-# Kakao REST API 키 (https://developers.kakao.com/)
-KAKAO_API_KEY=your_kakao_api_key_here
+# Kakao Developers REST API Key (https://developers.kakao.com/)
+KAKAO_API_KEY=your_kakao_api_key
+
+# (선택) 서버 사이드 fetch용 기본 URL
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
-### 개발 서버 실행
+> `NEXT_PUBLIC_BASE_URL`가 없으면 기본값으로 `http://localhost:3000`을 사용합니다.
+
+## 4) 개발 서버 실행
 
 ```bash
 npm run dev
-# 또는
-yarn dev
-# 또는
-pnpm dev
 ```
 
-브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 애플리케이션을 확인하세요.
+브라우저에서 `http://localhost:3000`을 열어 확인합니다.
 
-## 📡 API 엔드포인트
+## 📡 API 명세
 
-### GET `/api/briefing`
-뉴스와 날씨 데이터를 반환합니다.
+## GET `/api/briefing`
 
-**응답 예시:**
+뉴스와 날씨를 병렬로 조회해 반환합니다.
+
+- Query params
+  - `category` (optional, 기본값: `technology`)
+  - `location` (optional, 기본값: `seoul`)
+
+응답 예시:
+
 ```json
 {
   "success": true,
   "data": {
-    "news": [...],
-    "weather": {...}
+    "news": {
+      "category": "technology",
+      "headlines": [
+        {
+          "title": "...",
+          "url": "..."
+        }
+      ]
+    },
+    "weather": {
+      "location": "Seoul",
+      "temperature": 23.4,
+      "description": "맑음",
+      "icon": "http://openweathermap.org/img/wn/10d.png"
+    }
   }
 }
 ```
 
-### GET `/api/traffic`
-교통 소요시간을 계산합니다.
+## GET `/api/traffic`
 
-**쿼리 파라미터:**
-- `originLat`: 출발지 위도
-- `originLng`: 출발지 경도
-- `destLat`: 도착지 위도
-- `destLng`: 도착지 경도
+좌표를 받아 예상 소요 시간을 계산해 반환합니다.
 
-**예시 요청:**
-```
+- Query params (모두 필수)
+  - `originLat`
+  - `originLng`
+  - `destLat`
+  - `destLng`
+
+요청 예시:
+
+```text
 GET /api/traffic?originLng=126.9706&originLat=37.5546&destLng=127.0276&destLat=37.4979
 ```
 
-**응답 예시:**
+응답 예시:
+
 ```json
 {
   "success": true,
@@ -129,93 +132,52 @@ GET /api/traffic?originLng=126.9706&originLat=37.5546&destLng=127.0276&destLat=3
 }
 ```
 
-## 📁 프로젝트 구조
+필수 파라미터가 없으면 `400` 에러를 반환합니다.
 
-```
+## 🖥️ 화면 동작 요약
+
+- 메인 페이지는 서버에서 `/api/briefing`을 호출해 뉴스/날씨를 렌더링합니다.
+- 교통 정보는 클라이언트 컴포넌트에서 좌표 입력 후 `/api/traffic`를 호출합니다.
+- 뉴스/날씨 API 호출 실패 시 각 섹션에서 fallback 메시지를 표시합니다.
+
+## 📁 현재 프로젝트 구조
+
+```text
 briefing/
 ├── app/
 │   ├── api/
-│   │   ├── test/
-│   │   │   └── route.ts          # 뉴스/날씨 API
-│   │   ├── traffic/
-│   │   │   └── route.ts          # 교통 정보 API
-│   │   ├── news/
-│   │   │   └── route.ts          # 뉴스 API (별도)
-│   │   └── weather/
-│   │       └── route.ts          # 날씨 API (별도)
+│   │   ├── briefing/route.ts
+│   │   └── traffic/route.ts
 │   ├── components/
-│   │   ├── NewsSection.tsx       # 뉴스 표시 컴포넌트
-│   │   ├── WeatherSection.tsx    # 날씨 표시 컴포넌트
-│   │   └── TrafficSection.tsx    # 교통 정보 컴포넌트
-│   ├── sevices/
-│   │   ├── newsService.ts        # 뉴스 API 서비스
-│   │   ├── weatherService.ts     # 날씨 API 서비스
-│   │   └── trafficService.ts     # 교통 API 서비스
-│   ├── globals.css               # 전역 스타일
-│   ├── layout.tsx                # 루트 레이아웃
-│   ├── page.tsx                  # 메인 페이지
-│   └── providers/
-│       └── QueryProvider.tsx     # React Query 프로바이더 (미사용)
-├── public/                       # 정적 파일
-├── .env.local                    # 환경 변수 (gitignore)
-├── package.json                  # 프로젝트 설정
-├── tailwind.config.ts           # Tailwind 설정
-├── next.config.ts               # Next.js 설정
-├── tsconfig.json                # TypeScript 설정
-└── README.md                     # 프로젝트 설명
+│   │   ├── NewsSection.tsx
+│   │   ├── WeatherSection.tsx
+│   │   ├── TrafficSection.tsx
+│   │   └── ErrorFallback.tsx
+│   ├── services/
+│   │   ├── newsService.ts
+│   │   ├── weatherService.ts
+│   │   └── trafficService.ts
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── not-found.tsx
+│   └── globals.css
+├── public/
+├── package.json
+├── next.config.ts
+├── tsconfig.json
+└── README.md
 ```
 
-## 🎯 사용 방법
-
-### 뉴스와 날씨 확인
-페이지 로드 시 자동으로 최신 뉴스와 서울 날씨 정보가 표시됩니다.
-
-### 교통 정보 계산
-1. 교통 정보 섹션에서 출발지와 도착지의 위도/경도를 입력하세요
-2. "소요시간 계산" 버튼을 클릭하세요
-3. 실시간 교통 소요시간이 표시됩니다
-
-**예시 좌표:**
-- 서울역: 위도 37.5546, 경도 126.9706
-- 강남역: 위도 37.4979, 경도 127.0276
-- 시청: 위도 37.5668, 경도 126.9784
-
-## 🔧 개발 및 빌드
-
-### 빌드
+## 🔧 스크립트
 
 ```bash
-npm run build
+npm run dev    # 개발 서버
+npm run build  # 프로덕션 빌드
+npm run start  # 프로덕션 실행
+npm run lint   # ESLint 실행
 ```
 
-### 프로덕션 실행
+## 📌 참고
 
-```bash
-npm start
-```
-
-### 린팅
-
-```bash
-npm run lint
-```
-
-## 🤝 기여하기
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 있습니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
-
-## 🙋‍♂️ 문의
-
-프로젝트에 대한 질문이나 제안사항이 있으시면 이슈를 열어주세요.
-
----
-
-**Note**: 이 프로젝트는 학습 및 데모 목적으로 만들어졌습니다. 실제 프로덕션 사용 시 API 키 관리와 보안에 유의하세요.
+- 외부 API 키가 없거나 유효하지 않으면 뉴스/날씨/교통 데이터가 `null` 또는 실패 응답으로 처리될 수 있습니다.
+- 실제 배포 시에는 환경 변수와 API 사용량(쿼터/요금 정책)을 반드시 확인하세요.
