@@ -1,36 +1,26 @@
+export const dynamic = "force-dynamic";
+
 import { NewsSection } from "./components/NewsSection";
 import { WeatherSection } from "./components/WeatherSection";
 import { TrafficSection } from "./components/TrafficSection";
-import type { NewsResult } from "./services/newsService";
-import type { WeatherResult } from "./services/weatherService";
+import { getNews, type NewsResult } from "./services/newsService";
+import { getWeather, type WeatherResult } from "./services/weatherService";
 
 interface BriefingData {
   news: NewsResult | null;
   weather: WeatherResult | null;
 }
 
-interface ApiResponse {
-  success: boolean;
-  data: BriefingData;
-  message?: string;
-}
-
 async function getBriefingData(): Promise<BriefingData> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/briefing`, {
-    cache: 'no-store', // SSR을 위해 캐시 비활성화
-  });
+  const [news, weather] = await Promise.all([
+    getNews("technology"),
+    getWeather("seoul"),
+  ]);
 
-  if (!response.ok) {
-    throw new Error(`API 요청 실패: ${response.status}`);
-  }
-
-  const result: ApiResponse = await response.json();
-
-  if (!result.success) {
-    throw new Error(result.message || "API 응답이 실패했습니다");
-  }
-
-  return result.data;
+  return {
+    news,
+    weather,
+  };
 }
 
 export default async function Home() {
