@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import type { TrafficResult } from "../sevices/trafficService";
+import type { TrafficResult } from "../services/trafficService";
 
 export function TrafficSection() {
   const [originLat, setOriginLat] = useState('');
@@ -124,10 +124,9 @@ export function TrafficSection() {
       {calculatedTraffic ? (
         <div className="mt-6 space-y-4">
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            {calculatedTraffic.origin} → {calculatedTraffic.destination}
+            {calculatedTraffic.origin} → {calculatedTraffic.destination} / 예상 소요 시간
           </p>
           <p className="text-2xl font-semibold">{calculatedTraffic.duration_in_minutes}분</p>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">예상 소요 시간</p>
         </div>
       ) : !calculatedTraffic && (
         <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">

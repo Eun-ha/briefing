@@ -1,4 +1,4 @@
-import type { NewsResult } from "../sevices/newsService";
+import type { NewsResult } from "../services/newsService";
 
 interface NewsSectionProps {
   news: NewsResult | null;

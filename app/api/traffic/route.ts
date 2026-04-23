@@ -1,4 +1,4 @@
-import { getTrafficInfo } from "../../sevices/trafficService";
+import { getTrafficInfo } from "../../services/trafficService";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { WeatherResult } from "../sevices/weatherService";
+import type { WeatherResult } from "../services/weatherService";
 
 interface WeatherSectionProps {
   weather: WeatherResult | null;

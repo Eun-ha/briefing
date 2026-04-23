@@ -1,5 +1,5 @@
-import { getNews } from "../../sevices/newsService";
-import { getWeather } from "../../sevices/weatherService";
+import { getNews } from "../../services/newsService";
+import { getWeather } from "../../services/weatherService";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);

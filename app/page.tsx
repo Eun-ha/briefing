@@ -1,8 +1,8 @@
 import { NewsSection } from "./components/NewsSection";
 import { WeatherSection } from "./components/WeatherSection";
 import { TrafficSection } from "./components/TrafficSection";
-import type { NewsResult } from "./sevices/newsService";
-import type { WeatherResult } from "./sevices/weatherService";
+import type { NewsResult } from "./services/newsService";
+import type { WeatherResult } from "./services/weatherService";
 
 interface BriefingData {
   news: NewsResult | null;
