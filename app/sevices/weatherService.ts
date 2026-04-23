@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const WEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 // OpenWeatherMap API 응답 타입들
